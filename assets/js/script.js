@@ -1,4 +1,6 @@
 let imageDirectory = "assets/images/"
+var numEntries = 1;
+var selectedImage = "";
 let participants = [
     {
         name : "Franz Ferdinand",
@@ -42,3 +44,43 @@ let participants = [
     }
 ]
 
+function createSelect(id) {
+    const selectImage = $("<select class='participantSelect' data-select-id='" + id + "'>")
+
+    selectImage.append('<option selected="true" disabled="disabled">--Select--</option>')
+    
+    participants.forEach(entry => {
+        selectImage.append('<option value="' + entry.name + '">' + entry.name + '</option>');
+    })
+
+    return selectImage;
+}
+
+$(".reply-card-addNew button").on("click", function() {
+    numEntries = numEntries + 1;
+    var newCard = $("<div class='reply-card' data-id='" + numEntries + "'>")
+    var newSelectImage = createSelect(numEntries);
+    newCard.append(newSelectImage);
+
+    $(".container").append(newCard);
+})
+
+$(".container").on("change", ".participantSelect", function(event) {
+
+    for (var i = 0; i < participants.length; i++) {
+        if (participants[i].name === event.target.value) {
+            selectedImage = participants[i].image;
+        }
+    }
+
+    var newImage = $('<img class="reply-card-pic" src="' + selectedImage + '" alt="' + event.target.value + '"/>')
+
+    var currentCard =  $(".container").find(".reply-card[data-id='" + event.target.getAttribute('data-select-id') + "']");
+
+    currentCard.append(newImage);
+    currentCard.append($("<textarea class='reply-card-text'>"));
+    currentCard.append($("<div class='reply-card-date'><p>7/28/1914</p></div>"));
+
+    $(event.target).css('display', 'none');
+
+})
