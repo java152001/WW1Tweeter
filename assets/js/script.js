@@ -41,3 +41,4 @@ let participants = [
         image : imageDirectory + "wilhelm-ii.jpg"
     }
 ]
+
