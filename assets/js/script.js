@@ -84,3 +84,21 @@ $(".container").on("change", ".participantSelect", function(event) {
     $(event.target).css('display', 'none');
 
 })
+
+$(".make-image button").on("click", function() {
+    $(".image-download").empty();
+
+    var convertToImg = $(".container")[0];
+
+    html2canvas(convertToImg).then(function(canvas) {
+
+        let downloadLink = $("<a class='downloadImage'>");
+        downloadLink.text("Click here for Image");
+        downloadLink.attr('href', canvas.toDataURL());
+        downloadLink.attr('download', 'myImage.png');
+
+        $(".image-download").append(downloadLink);
+        downloadLink[0].click();
+        $(".image-download").empty();
+    })
+})
