@@ -78,7 +78,7 @@ $(".container").on("change", ".participantSelect", function(event) {
     var currentCard =  $(".container").find(".reply-card[data-id='" + event.target.getAttribute('data-select-id') + "']");
 
     currentCard.append(newImage);
-    currentCard.append($("<textarea class='reply-card-text'>"));
+    currentCard.append($("<input class='reply-card-text'>"));
     currentCard.append($("<div class='reply-card-date'><label>Date:</label><input placeholder='7/28/1914'></input></div>"));
 
     $(event.target).css('display', 'none');
@@ -103,4 +103,8 @@ $(".make-image button").on("click", function() {
         downloadLink[0].click();
         $(".image-download").empty();
     })
+})
+
+$(".test-button").on("click", function() {
+    
 })
