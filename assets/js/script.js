@@ -79,7 +79,7 @@ $(".container").on("change", ".participantSelect", function(event) {
 
     currentCard.append(newImage);
     currentCard.append($("<textarea class='reply-card-text'>"));
-    currentCard.append($("<div class='reply-card-date'><p>7/28/1914</p></div>"));
+    currentCard.append($("<div class='reply-card-date'><label>Date:</label><input placeholder='7/28/1914'></input></div>"));
 
     $(event.target).css('display', 'none');
 
@@ -91,6 +91,8 @@ $(".make-image button").on("click", function() {
     var convertToImg = $(".container")[0];
 
     html2canvas(convertToImg).then(function(canvas) {
+
+        console.log(canvas)
 
         let downloadLink = $("<a class='downloadImage'>");
         downloadLink.text("Click here for Image");
