@@ -47,3 +47,8 @@ img {
     resize: none;
 }
 
+.reply-card-newText {
+    margin-right: auto;
+    margin-left: 5px;
+    font-weight: bold;
+}
